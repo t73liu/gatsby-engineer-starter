@@ -1,3 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
+import SEO from "../components/seo";
 
-export default () => <div>Hello world!</div>;
+export default () => (
+  <Fragment>
+    <SEO title="Home" />
+    <div>Hello world!</div>
+  </Fragment>
+);
