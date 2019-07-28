@@ -85,6 +85,6 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 Additional instructions can be found [here](https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/)
 
 ```sh
-# Pushes contents of /public folder to gh-pages branch 
+# Pushes contents of /public folder to gh-pages branch
 yarn run deploy
 ```

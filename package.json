@@ -8,12 +8,13 @@
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "develop": "gatsby develop",
-    "format": "prettier --write **/*.{js,jsx}",
+    "format": "prettier --write **/*.{js,jsx,css,md,json}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
+    "bulma": "^0.7.5",
     "gatsby": "^2.13.41",
     "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-offline": "^2.2.4",
@@ -23,6 +24,7 @@
     "react-helmet": "6.0.0-beta"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
     "gh-pages": "^2.0.1",
     "prettier": "^1.18.2"
   },
