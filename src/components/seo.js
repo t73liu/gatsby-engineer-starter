@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
 function SEO({ description = "", lang = "en", meta = [], title }) {
@@ -67,6 +67,8 @@ function SEO({ description = "", lang = "en", meta = [], title }) {
           content: metaDescription,
         },
       ].concat(meta)}
+      // https://github.com/nfl/react-helmet/issues/315
+      defer={false}
     />
   );
 }
