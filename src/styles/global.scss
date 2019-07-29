@@ -4,3 +4,8 @@ $footer-padding: 2rem 1rem;
 
 @import "../../node_modules/bulma/bulma";
 @import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+
+iframe {
+  height: 300px;
+  width: 400px;
+}

@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "gatsby";
 
-const Layout = ({ children }) => (
+export default ({ children }) => (
   // Might lose class names https://github.com/gatsbyjs/gatsby/issues/8560
   <div>
     <nav
-      className="container navbar is-light is-fixed-top"
+      className="navbar is-light is-fixed-top"
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="navbar-brand">
+      <div className="container navbar-brand">
         <Link className="navbar-item" to="/">
           Home
         </Link>
@@ -38,5 +38,3 @@ const Layout = ({ children }) => (
     </div>
   </div>
 );
-
-export default Layout;
