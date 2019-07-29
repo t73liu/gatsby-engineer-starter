@@ -16,7 +16,7 @@ export default ({ data }) => (
       <div className="tile is-ancestor">
         <div className="tile is-vertical is-12">
           {data.allMarkdownRemark.edges.map(({ node }) => (
-            <Link to={node.fields.slug}>
+            <Link key={node.id} to={node.fields.slug}>
               <div className="tile is-parent">
                 <article className="tile is-child notification">
                   <p className="title">{node.frontmatter.title}</p>
