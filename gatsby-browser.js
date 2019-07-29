@@ -1,7 +1,6 @@
-import "bulma/css/bulma.css";
-import "@fortawesome/fontawesome-free/css/all.css";
 import React from "react";
 import Layout from "./src/components/layout";
+import "./src/styles/global.scss";
 
 export const wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get

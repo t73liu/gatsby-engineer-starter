@@ -9,6 +9,8 @@ module.exports = {
   pathPrefix: "/gatsby-engineer-starter",
   plugins: [
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sass",
+    "gatsby-plugin-purgecss",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
