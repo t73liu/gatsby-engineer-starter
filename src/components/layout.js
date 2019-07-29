@@ -7,7 +7,7 @@ const Layout = ({ children }) => (
   <div>
     <div className="site">
       <nav
-        className="navbar is-dark"
+        className="navbar is-light is-spaced"
         role="navigation"
         aria-label="main navigation"
       >
