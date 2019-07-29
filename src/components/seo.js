@@ -31,6 +31,9 @@ function SEO({ description = "", lang = "en", meta = [], title }) {
       htmlAttributes={{
         lang,
       }}
+      bodyAttributes={{
+        class: "has-navbar-fixed-top",
+      }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[

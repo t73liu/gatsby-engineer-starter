@@ -1,29 +1,28 @@
 import React from "react";
 import { Link } from "gatsby";
-import "./layout.scss";
 
 const Layout = ({ children }) => (
-  // Extra div required because of https://github.com/gatsbyjs/gatsby/issues/8560
+  // Might lose class names https://github.com/gatsbyjs/gatsby/issues/8560
   <div>
-    <div className="site">
-      <nav
-        className="navbar is-light is-spaced"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div className="navbar-brand">
-          <Link className="navbar-item" to="/">
-            Home
-          </Link>
-          <Link className="navbar-item" to="/blog/">
-            Blog
-          </Link>
-          <Link className="navbar-item" to="/projects/">
-            Projects
-          </Link>
-        </div>
-      </nav>
-      <main className="site-content">{children}</main>
+    <nav
+      className="container navbar is-light is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div className="navbar-brand">
+        <Link className="navbar-item" to="/">
+          Home
+        </Link>
+        <Link className="navbar-item" to="/blog/">
+          Blog
+        </Link>
+        <Link className="navbar-item" to="/projects/">
+          Projects
+        </Link>
+      </div>
+    </nav>
+    <div className="hero is-fullheight-with-navbar">
+      <main>{children}</main>
       <footer className="footer is-fixed-bottom">
         <div className="content has-text-centered">
           <p>
