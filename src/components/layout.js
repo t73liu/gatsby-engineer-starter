@@ -1,16 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { Link } from "gatsby";
 
-export default ({ children, initialIsActive = false }) => {
-  const [isActive, setIsActive] = useState(initialIsActive);
-  const memoizedHandleClick = useCallback(
-    e => {
-      e.preventDefault();
-      setIsActive(!isActive);
-    },
-    [isActive] // Tells React to memoize regardless of arguments.
-  );
-  const activeClass = isActive ? "is-active" : "";
+export default ({ children }) => {
   return (
     // Might lose class names https://github.com/gatsbyjs/gatsby/issues/8560
     <div>
@@ -19,31 +10,16 @@ export default ({ children, initialIsActive = false }) => {
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="navbar-brand">
-          <a
-            role="button"
-            className={`navbar-burger ${activeClass}`}
-            onClick={memoizedHandleClick}
-            aria-label="menu"
-            aria-expanded="false"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div className={`navbar-menu ${activeClass}`}>
-          <div className="navbar-start">
-            <Link className="navbar-item" to="/">
-              Home
-            </Link>
-            <Link className="navbar-item" to="/blog/">
-              Blog
-            </Link>
-            <Link className="navbar-item" to="/projects/">
-              Projects
-            </Link>
-          </div>
+        <div className="container navbar-brand">
+          <Link className="navbar-item" to="/">
+            Home
+          </Link>
+          <Link className="navbar-item" to="/blog/">
+            Blog
+          </Link>
+          <Link className="navbar-item" to="/projects/">
+            Projects
+          </Link>
         </div>
       </nav>
       <div className="hero is-fullheight-with-navbar">
