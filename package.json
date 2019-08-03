@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.10.1",
-    "gh-pages": "^2.1.0",
+    "gh-pages": "2.0.1",
     "prettier": "^1.18.2"
   },
   "repository": {
