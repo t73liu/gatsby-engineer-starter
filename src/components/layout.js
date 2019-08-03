@@ -12,13 +12,13 @@ export default ({ children }) => {
       >
         <div className="container navbar-brand">
           <Link className="navbar-item" to="/">
-            Home
+            <strong>Home</strong>
           </Link>
-          <Link className="navbar-item" to="/blog/">
-            Blog
+          <Link className="navbar-item is-bold" to="/blog/">
+            <strong>Blog</strong>
           </Link>
-          <Link className="navbar-item" to="/projects/">
-            Projects
+          <Link className="navbar-item is-bold" to="/projects/">
+            <strong>Projects</strong>
           </Link>
         </div>
       </nav>
@@ -27,10 +27,13 @@ export default ({ children }) => {
         <footer className="footer is-fixed-bottom">
           <div className="content has-text-centered">
             <p>
-              <strong>Gatsby</strong> starter by{" "}
-              <a href="https://t73liu.github.io">Tao Liu</a>. The{" "}
+              Gatsby starter by{" "}
+              <a href="https://t73liu.github.io">
+                <strong>Tao Liu</strong>
+              </a>
+              . The{" "}
               <a href="https://github.com/t73liu/gatsby-engineer-starter">
-                source code
+                <strong>source code</strong>
               </a>{" "}
               is licensed MIT.
             </p>

@@ -1,6 +1,7 @@
 ---
 title: "Rabble Rabble"
 date: "2019-08-12"
+tags: ["test", "video"]
 ---
 
 Pandas are really sweet.
