@@ -17,14 +17,41 @@ module.exports = {
     {
       resolve: "gatsby-plugin-layout",
       options: {
-        component: require.resolve("./src/components/layout.js")
-      }
+        component: require.resolve("./src/components/layout.js"),
+      },
     },
-    "gatsby-transformer-remark",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          "gatsby-remark-responsive-iframe",
+          "gatsby-remark-prismjs",
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 800,
+              wrapperStyle: fluidResult =>
+                `flex:${_.round(fluidResult.aspectRatio, 2)};`,
+            },
+          },
+        ],
+      },
+    },
     "gatsby-plugin-lodash",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
-    "gatsby-plugin-purgecss",
+    {
+      resolve: "gatsby-plugin-purgecss",
+      options: {
+        printRejected: true, // Print removed selectors and processed file names
+        ignore: ['prismjs/', 'src/'], // Ignore files/folders
+      },
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {

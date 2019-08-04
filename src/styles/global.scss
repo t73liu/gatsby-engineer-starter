@@ -2,8 +2,18 @@
 
 $footer-padding: 2rem 1rem;
 
-@import "../../node_modules/bulma/bulma";
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/bulma/sass/utilities/all";
+@import "../../node_modules/bulma/sass/base/all";
+@import "../../node_modules/bulma/sass/elements/button";
+@import "../../node_modules/bulma/sass/elements/container";
+@import "../../node_modules/bulma/sass/elements/content";
+@import "../../node_modules/bulma/sass/elements/image";
+@import "../../node_modules/bulma/sass/elements/notification";
+@import "../../node_modules/bulma/sass/elements/tag";
+@import "../../node_modules/bulma/sass/elements/title";
+@import "../../node_modules/bulma/sass/grid/all";
+@import "../../node_modules/bulma/sass/layout/all";
+@import "../../node_modules/bulma/sass/components/navbar";
 
 iframe {
   height: 300px;
