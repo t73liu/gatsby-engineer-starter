@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import SEO from "../components/seo";
 
 export default ({ data }) => {
@@ -15,17 +15,15 @@ export default ({ data }) => {
           </div>
         </div>
       </section>
-      <div className="container">
-        <div className="hero-body">
-          <div
-            className="content is-medium"
-            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-          />
-        </div>
+      <div className="padded-container">
+        <div
+          className="content is-medium"
+          dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+        />
         <div className="hero-foot tags are-medium">
           {tags.map(tag => (
-            <span key={tag} className="tag is-link">
-              {tag}
+            <span key={tag} className="tag">
+              <Link to={`/blog/tags/${tag}`}>{tag}</Link>
             </span>
           ))}
         </div>

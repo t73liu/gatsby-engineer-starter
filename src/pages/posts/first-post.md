@@ -1,7 +1,9 @@
 ---
 title: "Sample Markdown"
 date: "2019-08-05"
-tags: ["markdown", "test"]
+tags:
+  - markdown
+  - test
 ---
 
 # h1 Heading 8-)

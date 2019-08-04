@@ -1,5 +1,6 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+const { flatMap, uniq } = require("lodash");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
@@ -23,6 +24,9 @@ exports.createPages = ({ graphql, actions }) => {
             fields {
               slug
             }
+            frontmatter {
+              tags
+            }
           }
         }
       }
@@ -36,6 +40,23 @@ exports.createPages = ({ graphql, actions }) => {
           // Data passed to context is available
           // in page queries as GraphQL variables.
           slug: node.fields.slug,
+        },
+      });
+    });
+
+    uniq(
+      flatMap(
+        result.data.allMarkdownRemark.edges,
+        ({ node }) => node.frontmatter.tags
+      )
+    ).forEach(tag => {
+      createPage({
+        path: `/blog/tags/${tag}/`,
+        component: path.resolve("./src/templates/blog-tag.js"),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          tag,
         },
       });
     });

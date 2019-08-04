@@ -10,8 +10,9 @@ iframe {
   width: 400px;
 }
 
-.hero-foot {
-  padding: 0 1.5rem;
+.padded-container {
+  @extend .container;
+  padding: 3rem 1.5rem;
 }
 
 .navbar-brand.container {
