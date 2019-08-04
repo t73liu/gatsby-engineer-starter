@@ -14,6 +14,12 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
+    {
+      resolve: "gatsby-plugin-layout",
+      options: {
+        component: require.resolve("./src/components/layout.js")
+      }
+    },
     "gatsby-transformer-remark",
     "gatsby-plugin-lodash",
     "gatsby-plugin-react-helmet",
@@ -31,7 +37,8 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-offline",
+    "gatsby-plugin-remove-serviceworker",
+    // "gatsby-plugin-offline",
   ],
   siteMetadata: {
     title: "Gatsby Engineer Starter",

@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 
 export default ({ children }) => {
   return (
-    // Might lose class names https://github.com/gatsbyjs/gatsby/issues/8560
     <div>
       <nav
         className="navbar is-light is-fixed-top"
