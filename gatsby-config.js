@@ -15,6 +15,7 @@ module.exports = {
       },
     },
     "gatsby-transformer-remark",
+    "gatsby-plugin-lodash",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     "gatsby-plugin-purgecss",
