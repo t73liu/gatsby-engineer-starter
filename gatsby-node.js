@@ -1,6 +1,5 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
-const { flatMap, uniq } = require("lodash");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
@@ -18,21 +17,19 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return graphql(`
     {
-      allMarkdownRemark {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              tags
-            }
+      tags: allMarkdownRemark {
+        distinct(field: frontmatter___tags)
+      }
+      posts: allMarkdownRemark {
+        nodes {
+          fields {
+            slug
           }
         }
       }
     }
   `).then(result => {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    result.data.posts.nodes.forEach(node => {
       createPage({
         path: node.fields.slug,
         component: path.resolve("./src/templates/blog-post.js"),
@@ -43,13 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
         },
       });
     });
-
-    uniq(
-      flatMap(
-        result.data.allMarkdownRemark.edges,
-        ({ node }) => node.frontmatter.tags
-      )
-    ).forEach(tag => {
+    result.data.tags.distinct.forEach(tag => {
       createPage({
         path: `/blog/tags/${tag}/`,
         component: path.resolve("./src/templates/blog-tag.js"),

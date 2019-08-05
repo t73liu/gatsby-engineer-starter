@@ -49,7 +49,7 @@ module.exports = {
       resolve: "gatsby-plugin-purgecss",
       options: {
         printRejected: true, // Print removed selectors and processed file names
-        ignore: ['prismjs/', 'src/'], // Ignore files/folders
+        ignore: ["prismjs/", "src/"], // Ignore files/folders
       },
     },
     {

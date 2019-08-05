@@ -17,7 +17,7 @@ export default ({ data }) => {
       </section>
       <div className="padded-container">
         <div
-          className="content is-medium"
+          className="content"
           dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
         />
         <div className="hero-foot tags are-medium">
