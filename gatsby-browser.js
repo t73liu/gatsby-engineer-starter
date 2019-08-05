@@ -1,5 +1,5 @@
 import "./src/styles/global.scss";
-import "prismjs/themes/prism-solarizedlight.css";
+import "prismjs/themes/prism-tomorrow.css";
 
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(
