@@ -5,14 +5,19 @@ export default Blog;
 
 export const query = graphql`
   query($tag: [String]) {
-    tags: allMarkdownRemark {
+    tags: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "//posts//" } } }
+    ) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }
     }
     posts: allMarkdownRemark(
-      filter: { frontmatter: { tags: { in: $tag } } }
+      filter: {
+        fields: { slug: { regex: "//posts//" } }
+        frontmatter: { tags: { in: $tag } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
@@ -21,7 +26,7 @@ export const query = graphql`
         excerpt
         frontmatter {
           tags
-          date(formatString: "YYYY-MM-DD")
+          date
           title
         }
         fields {

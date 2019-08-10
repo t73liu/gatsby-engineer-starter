@@ -17,10 +17,28 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return graphql(`
     {
-      tags: allMarkdownRemark {
+      blogTags: allMarkdownRemark(
+        filter: { fields: { slug: { regex: "//posts//" } } }
+      ) {
         distinct(field: frontmatter___tags)
       }
-      posts: allMarkdownRemark {
+      posts: allMarkdownRemark(
+        filter: { fields: { slug: { regex: "//posts//" } } }
+      ) {
+        nodes {
+          fields {
+            slug
+          }
+        }
+      }
+      projectTags: allMarkdownRemark(
+        filter: { fields: { slug: { regex: "//projects//" } } }
+      ) {
+        distinct(field: frontmatter___tags)
+      }
+      projects: allMarkdownRemark(
+        filter: { fields: { slug: { regex: "//projects//" } } }
+      ) {
         nodes {
           fields {
             slug
@@ -29,25 +47,39 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
+    result.data.blogTags.distinct.forEach(tag => {
+      createPage({
+        path: `/blog/tags/${tag}/`,
+        component: path.resolve("./src/templates/blog-tag.js"),
+        context: {
+          tag,
+        },
+      });
+    });
     result.data.posts.nodes.forEach(node => {
       createPage({
         path: node.fields.slug,
         component: path.resolve("./src/templates/blog-post.js"),
         context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
           slug: node.fields.slug,
         },
       });
     });
-    result.data.tags.distinct.forEach(tag => {
+    result.data.projectTags.distinct.forEach(tag => {
       createPage({
-        path: `/blog/tags/${tag}/`,
-        component: path.resolve("./src/templates/blog-tag.js"),
+        path: `/projects/tags/${tag}/`,
+        component: path.resolve("./src/templates/project-tag.js"),
         context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
           tag,
+        },
+      });
+    });
+    result.data.projects.nodes.forEach(node => {
+      createPage({
+        path: node.fields.slug,
+        component: path.resolve("./src/templates/project.js"),
+        context: {
+          slug: node.fields.slug,
         },
       });
     });

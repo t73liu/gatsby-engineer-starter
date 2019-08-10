@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import ExternalLink from "./external-link";
 
 export default ({ children }) => {
   return (
@@ -27,13 +28,13 @@ export default ({ children }) => {
           <div className="content has-text-centered">
             <p>
               Gatsby starter by{" "}
-              <a href="https://t73liu.github.io">
+              <ExternalLink url="https://t73liu.github.io">
                 <strong>Tao Liu</strong>
-              </a>
+              </ExternalLink>
               . The{" "}
-              <a href="https://github.com/t73liu/gatsby-engineer-starter">
+              <ExternalLink url="https://github.com/t73liu/gatsby-engineer-starter">
                 <strong>source code</strong>
-              </a>{" "}
+              </ExternalLink>{" "}
               is licensed MIT.
             </p>
           </div>

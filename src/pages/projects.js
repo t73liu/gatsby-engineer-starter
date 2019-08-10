@@ -1,15 +1,37 @@
-import React, { Fragment } from "react";
-import SEO from "../components/seo";
+import { graphql } from "gatsby";
+import Projects from "../components/projects";
 
-export default () => (
-  <Fragment>
-    <SEO title="Projects" />
-    <section className="hero is-primary is-bold">
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title">Projects</h1>
-        </div>
-      </div>
-    </section>
-  </Fragment>
-);
+export default Projects;
+
+export const query = graphql`
+  query {
+    tags: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "//projects//" } } }
+    ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+    }
+    projects: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "//projects//" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        id
+        frontmatter {
+          title
+          date
+          description
+          tags
+          source
+          demo
+          image
+        }
+        fields {
+          slug
+        }
+      }
+    }
+  }
+`;

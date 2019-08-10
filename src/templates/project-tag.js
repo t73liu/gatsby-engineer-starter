@@ -1,30 +1,35 @@
 import { graphql } from "gatsby";
-import Blog from "../components/blog";
+import Projects from "../components/projects";
 
-export default Blog;
+export default Projects;
 
 export const query = graphql`
-  query {
+  query($tag: [String]) {
     tags: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "//posts//" } } }
+      filter: { fields: { slug: { regex: "//projects//" } } }
     ) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }
     }
-    posts: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "//posts//" } } }
+    projects: allMarkdownRemark(
+      filter: {
+        fields: { slug: { regex: "//projects//" } }
+        frontmatter: { tags: { in: $tag } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
         id
-        timeToRead
-        excerpt
         frontmatter {
           title
           date
+          description
           tags
+          source
+          demo
+          image
         }
         fields {
           slug
