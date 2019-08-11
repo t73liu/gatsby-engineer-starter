@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import { Link } from "gatsby";
 import { chunk } from "lodash";
 import SEO from "./seo";
 import ProjectPreview from "./project-preview";
+import Tags from "./tags";
 
 export default ({ data: { tags, projects }, pageContext: { tag } }) => {
   return (
@@ -32,27 +32,7 @@ export default ({ data: { tags, projects }, pageContext: { tag } }) => {
           </div>
           <div className="column">
             <article className="tile is-child">
-              <p className="title">Tags</p>
-              <div className="tags are-medium">
-                {tags.group.map(({ fieldValue, totalCount }) => (
-                  <span
-                    key={fieldValue}
-                    className={
-                      fieldValue === tag ? "tag has-text-weight-bold" : "tag"
-                    }
-                  >
-                    <Link
-                      to={
-                        fieldValue === tag
-                          ? "/projects/"
-                          : `/projects/tags/${fieldValue}/`
-                      }
-                    >
-                      {fieldValue} ({totalCount})
-                    </Link>
-                  </span>
-                ))}
-              </div>
+              <Tags tags={tags} tag={tag} baseUrl="/projects" />
             </article>
           </div>
         </div>

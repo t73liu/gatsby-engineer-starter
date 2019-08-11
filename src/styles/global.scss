@@ -49,4 +49,7 @@ body {
 
 a {
   color: lightseagreen;
+  &:hover {
+    color: seagreen;
+  }
 }

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { Link } from "gatsby";
 import SEO from "./seo";
 import BlogPreview from "./blog-preview";
+import Tags from "./tags";
 
 export default ({ data: { tags, posts }, pageContext: { tag } }) => {
   return (
@@ -15,39 +15,21 @@ export default ({ data: { tags, posts }, pageContext: { tag } }) => {
         </div>
       </section>
       <div className="padded-container">
-        <div className="tile is-ancestor">
-          <div className="tile is-vertical is-8">
-            {posts.nodes.map(node => (
-              <div key={node.id} className="tile is-parent">
-                <article className="tile is-child">
-                  <BlogPreview {...node} />
-                </article>
-              </div>
-            ))}
+        <div className="columns">
+          <div className="column is-three-quarters">
+            <div className="tile is-ancestor is-vertical">
+              {posts.nodes.map(node => (
+                <div key={node.id} className="tile is-parent">
+                  <article className="tile is-child">
+                    <BlogPreview {...node} />
+                  </article>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="tile is-vertical is-parent">
+          <div className="column">
             <article className="tile is-child">
-              <p className="title">Tags</p>
-              <div className="tags are-medium">
-                {tags.group.map(({ fieldValue, totalCount }) => (
-                  <span
-                    key={fieldValue}
-                    className={
-                      fieldValue === tag ? "tag has-text-weight-bold" : "tag"
-                    }
-                  >
-                    <Link
-                      to={
-                        fieldValue === tag
-                          ? "/blog/"
-                          : `/blog/tags/${fieldValue}/`
-                      }
-                    >
-                      {fieldValue} ({totalCount})
-                    </Link>
-                  </span>
-                ))}
-              </div>
+              <Tags tags={tags} tag={tag} baseUrl="/blog" />
             </article>
           </div>
         </div>
