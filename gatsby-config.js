@@ -68,8 +68,8 @@ module.exports = {
         icon: "content/images/icon.png",
       },
     },
-    "gatsby-plugin-remove-serviceworker",
-    // "gatsby-plugin-offline",
+    // "gatsby-plugin-remove-serviceworker",
+    "gatsby-plugin-offline",
   ],
   siteMetadata: {
     title: "Gatsby Engineer Starter",
