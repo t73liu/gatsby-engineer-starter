@@ -18,10 +18,10 @@ export default ({ data: { tags, projects }, pageContext: { tag } }) => {
       <div className="padded-container">
         <div className="columns">
           <div className="column is-three-quarters">
-            {chunk(projects.nodes, 2).map((row, index) => (
+            {chunk(projects.nodes, 3).map((row, index) => (
               <div key={index} className="tile is-ancestor">
                 {row.map(node => (
-                  <div key={node.id} className="tile is-parent is-6">
+                  <div key={node.id} className="tile is-parent is-4">
                     <article className="tile is-child">
                       <ProjectPreview {...node} />
                     </article>

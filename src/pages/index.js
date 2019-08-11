@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import SEO from "../components/seo";
 import BlogPreview from "../components/blog-preview";
 import ProjectPreview from "../components/project-preview";
 
-export default ({ data: { posts, projects } }) => (
+export default ({ data: { posts, projects, profileImage } }) => (
   <Fragment>
     <SEO title="Home" />
     <section className="hero is-primary is-bold">
@@ -19,12 +20,7 @@ export default ({ data: { posts, projects } }) => (
         <div className="column is-one-quarter">
           <div className="card">
             <div className="card-image">
-              <figure className="image is-4by3">
-                <img
-                  src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="Profile"
-                />
-              </figure>
+              <Img fluid={profileImage.childImageSharp.fluid} alt="Profile" />
             </div>
             <div className="card-content">
               <p className="title is-4">John Smith</p>
@@ -56,7 +52,7 @@ export default ({ data: { posts, projects } }) => (
             <p className="title">Recent Projects</p>
             <div className="tile is-ancestor">
               {projects.nodes.map(node => (
-                <div key={node.id} className="tile is-6 is-parent">
+                <div key={node.id} className="tile is-4 is-parent">
                   <article className="tile is-child">
                     <ProjectPreview {...node} />
                   </article>
@@ -92,7 +88,7 @@ export const query = graphql`
       }
     }
     projects: allMarkdownRemark(
-      limit: 2
+      limit: 3
       filter: { fields: { slug: { regex: "//projects//" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
@@ -105,10 +101,24 @@ export const query = graphql`
           tags
           source
           demo
-          image
+          image {
+            childImageSharp {
+              fluid(maxWidth: 500, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         fields {
           slug
+        }
+      }
+    }
+    profileImage: file(relativePath: { eq: "images/profile.png" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        fluid {
+          ...GatsbyImageSharpFluid
         }
       }
     }

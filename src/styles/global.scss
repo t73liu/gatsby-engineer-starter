@@ -33,10 +33,18 @@ $title-weight: 700;
   display: flex;
 }
 
+.card {
+  border-radius: 10px;
+}
+
 .card-header-content {
   padding-top: $card-content-padding;
   padding-left: $card-content-padding;
   padding-right: $card-content-padding;
+}
+
+body {
+  background-color: seashell;
 }
 
 a {

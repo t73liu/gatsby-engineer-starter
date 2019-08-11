@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
+const { round } = require("lodash");
 
 module.exports = {
   pathPrefix: "/gatsby-engineer-starter",
@@ -10,8 +11,8 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "src",
-        path: `${__dirname}/src/`,
+        name: "content",
+        path: `${__dirname}/content/`,
       },
     },
     {
@@ -26,8 +27,8 @@ module.exports = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          "gatsby-remark-responsive-iframe",
-          "gatsby-remark-prismjs",
+          "gatsby-remark-external-links",
+          "gatsby-remark-relative-images",
           {
             resolve: "gatsby-remark-images",
             options: {
@@ -36,9 +37,12 @@ module.exports = {
               // base for generating different widths of each image.
               maxWidth: 800,
               wrapperStyle: fluidResult =>
-                `flex:${_.round(fluidResult.aspectRatio, 2)};`,
+                `flex:${round(fluidResult.aspectRatio, 2)};`,
             },
           },
+          "gatsby-remark-responsive-iframe",
+          "gatsby-remark-prismjs",
+          "gatsby-remark-copy-linked-files",
         ],
       },
     },
@@ -61,7 +65,7 @@ module.exports = {
         background_color: "#CDC449",
         theme_color: "#CDC449",
         display: "standalone",
-        icon: "src/images/icon.png",
+        icon: "content/images/icon.png",
       },
     },
     "gatsby-plugin-remove-serviceworker",

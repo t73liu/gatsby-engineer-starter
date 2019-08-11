@@ -29,7 +29,13 @@ export const query = graphql`
           tags
           source
           demo
-          image
+          image {
+            childImageSharp {
+              fluid(maxWidth: 500, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         fields {
           slug
