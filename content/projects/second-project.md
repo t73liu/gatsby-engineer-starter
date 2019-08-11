@@ -3,8 +3,6 @@ title: "Second Project"
 date: "2019-08-13"
 description: "Sample project description here to illustrate usage."
 image: /images/icon.png
-demo: https://t73liu.github.io/gatsby-engineer-starter/
-source: https://github.com/t73liu/gatsby-engineer-starter
 tags:
   - javascript
   - react.js
