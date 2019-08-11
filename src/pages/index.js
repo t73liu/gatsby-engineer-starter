@@ -22,7 +22,7 @@ export default ({ data: { posts, projects } }) => (
               <figure className="image is-4by3">
                 <img
                   src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="Placeholder image"
+                  alt="Profile"
                 />
               </figure>
             </div>
@@ -52,17 +52,17 @@ export default ({ data: { posts, projects } }) => (
               </div>
             ))}
           </div>
-        </div>
-        <div className="column">
           <div>
             <p className="title">Recent Projects</p>
-            {projects.nodes.map(node => (
-              <div key={node.id} className="tile is-parent">
-                <article className="tile is-child">
-                  <ProjectPreview {...node} />
-                </article>
-              </div>
-            ))}
+            <div className="tile is-ancestor">
+              {projects.nodes.map(node => (
+                <div key={node.id} className="tile is-6 is-parent">
+                  <article className="tile is-child">
+                    <ProjectPreview {...node} />
+                  </article>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default ({ data: { posts, projects } }) => (
 export const query = graphql`
   query {
     posts: allMarkdownRemark(
-      limit: 2
+      limit: 3
       filter: { fields: { slug: { regex: "//posts//" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

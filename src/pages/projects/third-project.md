@@ -1,6 +1,6 @@
 ---
-title: "First Project"
-date: "2019-08-12"
+title: "Final Project"
+date: "2019-08-14"
 description: "Sample project description here to illustrate usage."
 image: "placeholder"
 demo: https://t73liu.github.io/gatsby-engineer-starter/
