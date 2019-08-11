@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import SEO from "./seo";
 import { Link } from "gatsby";
-import ExternalLink from "./external-link";
+import ProjectPreview from "./project-preview";
 
 export default ({ data: { tags, projects }, pageContext: { tag } }) => {
   return (
@@ -20,36 +20,7 @@ export default ({ data: { tags, projects }, pageContext: { tag } }) => {
             {projects.nodes.map(node => (
               <div key={node.id} className="tile is-parent">
                 <article className="tile is-child">
-                  <div className="card">
-                    <header className="card-header">
-                      <p className="card-header-title is-size-4">
-                        <Link to={node.fields.slug}>
-                          {node.frontmatter.title}
-                        </Link>
-                      </p>
-                    </header>
-                    <div className="card-content">
-                      <div className="content">
-                        {node.frontmatter.description}
-                      </div>
-                    </div>
-                    <footer className="card-footer">
-                      {node.frontmatter.source && (
-                        <div className="card-footer-item">
-                          <ExternalLink url={node.frontmatter.source}>
-                            Code
-                          </ExternalLink>
-                        </div>
-                      )}
-                      {node.frontmatter.demo && (
-                        <div className="card-footer-item">
-                          <ExternalLink url={node.frontmatter.demo}>
-                            Demo
-                          </ExternalLink>
-                        </div>
-                      )}
-                    </footer>
-                  </div>
+                  <ProjectPreview {...node} />
                 </article>
               </div>
             ))}

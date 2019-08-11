@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
-import SEO from "./seo";
 import { Link } from "gatsby";
+import SEO from "./seo";
+import BlogPreview from "./blog-preview";
 
 export default ({ data: { tags, posts }, pageContext: { tag } }) => {
   return (
@@ -19,26 +20,7 @@ export default ({ data: { tags, posts }, pageContext: { tag } }) => {
             {posts.nodes.map(node => (
               <div key={node.id} className="tile is-parent">
                 <article className="tile is-child">
-                  <div className="card">
-                    <header className="card-header">
-                      <p className="card-header-title is-size-4">
-                        <Link to={node.fields.slug}>
-                          {node.frontmatter.title}
-                        </Link>
-                      </p>
-                    </header>
-                    <div className="card-content">
-                      <div className="content">{node.excerpt}</div>
-                    </div>
-                    <footer className="card-footer">
-                      <div className="card-footer-item">
-                        {node.frontmatter.date}
-                      </div>
-                      <div className="card-footer-item">
-                        {node.timeToRead} min read
-                      </div>
-                    </footer>
-                  </div>
+                  <BlogPreview {...node} />
                 </article>
               </div>
             ))}
