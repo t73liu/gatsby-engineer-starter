@@ -2,7 +2,7 @@
   "name": "gatsby-engineer-starter",
   "private": true,
   "description": "An engineer starter for Gatsby",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "clean": "gatsby clean",
